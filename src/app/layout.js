@@ -25,12 +25,13 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <header className="px-5 py-2 flex items-center justify-between gap-5 bg-stone-800">
-          <img src="/logo.jpg" alt="Logo" className="w-[80px]" />
-        
-        <div className="space-x-5">
-          <Link className="btn" href="/foods">Food</Link>
-          <Link className="btn" href="/reviews">Reviews</Link>
-        </div>
+          <Link href="/">
+            <img src="/logo.jpg" alt="Logo" className="w-[80px]" />
+          </Link>
+          <div className="space-x-5">
+            <Link className="btn" href="/foods">Food</Link>
+            <Link className="btn" href="/reviews">Reviews</Link>
+          </div>
         </header>
         <main className="px-5 py-4">
           {children}

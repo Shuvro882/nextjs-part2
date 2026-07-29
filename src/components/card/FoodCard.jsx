@@ -1,12 +1,13 @@
 import Link from "next/link";
 import CartButton from "../buttons/CartButton";
+import style from "@/app/foods/foods.module.css";
 
 
 const FoodCard = ({ food }) => {
   const { id, title, foodImg, price, category } = food;
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-xl transition duration-300">
+    <div className={`bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-xl transition duration-300 ${style.bgred}`}>
       <img
         src={foodImg}
         alt={title}

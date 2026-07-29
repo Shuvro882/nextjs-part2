@@ -1,5 +1,9 @@
 import React from 'react';
 
+export function generateStaricParams() {
+  return[{id: '52968'}, {id: '52862'}, {id: '52805'}]
+}
+
 const getSingleFood = async (id) => {
   try {
     const res = await fetch(`https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`, {

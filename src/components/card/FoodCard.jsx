@@ -1,4 +1,6 @@
 import Link from "next/link";
+import CartButton from "../buttons/CartButton";
+
 
 const FoodCard = ({ food }) => {
   const { id, title, foodImg, price, category } = food;
@@ -25,9 +27,7 @@ const FoodCard = ({ food }) => {
         </p>
 
         <div className="flex gap-3 mt-5">
-          <button className="flex-1 bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition">
-            Add to Cart
-          </button>
+        <CartButton food={food}></CartButton>
 
           <Link
             href={`/foods/${id}`}

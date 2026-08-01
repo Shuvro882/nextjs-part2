@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CartButton from "../buttons/CartButton";
 import style from "@/app/foods/foods.module.css";
+import Image from "next/image";
 
 
 const FoodCard = ({ food }) => {
@@ -8,11 +9,20 @@ const FoodCard = ({ food }) => {
 
   return (
     <div className={`bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-xl transition duration-300 ${style.bgred}`}>
-      <img
+      {/* <img
         src={foodImg}
         alt={title}
         className="w-full h-52 object-cover"
-      />
+      /> */}
+
+      <Image   
+        src={foodImg}
+        alt={title}
+        className="w-full h-52 object-cover"
+        width={300}
+        height={150}
+      >
+      </Image>
 
       <div className="p-5">
         <span className="inline-block px-3 py-1 text-xs font-medium bg-orange-100 text-orange-600 rounded-full mb-3">

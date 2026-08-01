@@ -4,6 +4,25 @@ export function generateStaricParams() {
   return[{id: '52968'}, {id: '52862'}, {id: '52805'}]
 }
 
+// export const metadata = {
+//   title: "Food Details",
+//   description: "Best Fastfood in BD",
+// };
+
+export async function generateMetadata({params}){
+     const {id} = await params;
+     const res = await fetch(
+      `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`
+    );
+
+    const { details= {}} = await res.json();
+
+    return{
+      title: details.title,
+    };
+
+}
+
 const getSingleFood = async (id) => {
   try {
     const res = await fetch(`https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`, {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Star, Heart } from "lucide-react";
+import Image from "next/image";
 
 // Replace this with your actual logged-in user email or context state
 const CURRENT_USER_EMAIL = "john@mail.com";
@@ -29,11 +30,19 @@ export const ReviewCard = ({ reviewData }) => {
       {/* Header: User Profile & Rating */}
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <img
+          {/* <img
             src={photo}
             alt={user}
             className="h-12 w-12 rounded-full object-cover ring-2 ring-gray-100"
-          />
+          /> */}
+          <Image
+            src={photo}
+            alt={user}
+            className="h-12 w-12 rounded-full object-cover ring-2 ring-gray-100"
+            width={48}
+            height={48}
+          >
+          </Image>
           <div>
             <h4 className="font-semibold text-gray-900">{user}</h4>
             <p className="text-xs text-gray-500">{formattedDate}</p>

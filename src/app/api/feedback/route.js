@@ -1,9 +1,17 @@
 import { DatabasePlus } from "lucide-react";
-import { feedback } from "../route";
+// import { feedback } from "../route";
+import { connect } from "@/app/lib/dbConnect";
+import { revalidatePath } from "next/cache";
 
+
+
+const feedbackCollection=connect("feedbacks");
 
 export async function GET(request) {
-    return Response.json(feedback)
+
+    
+    const result = await feedbackCollection.find().toArray();
+    return Response.json(result)
 }
 
 export async function POST(request) {
@@ -19,14 +27,20 @@ export async function POST(request) {
     })
    }
 
-   const newfeedback = {message, id:feedback.length+1};
-   feedback.push(newfeedback);
+//    const newfeedback = {message, id:feedback.length+1};
+   const newfeedback = {message, date:new Date().toISOString()};
+//    feedback.push(newfeedback);
+
+const result =await feedbackCollection.insertOne(newfeedback);
+revalidatePath("/feedback")
 
 
-    return Response.json({
-        // status:200,
-        // data
-        acknowledged:true,
-        insertedId:newfeedback.id,
-    })
+return Response.json(result);
+
+    // return Response.json({
+    //     // status:200,
+    //     // data
+    //     acknowledged:true,
+    //     insertedId:newfeedback.id,
+    // })
 }

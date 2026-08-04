@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import React from 'react';
 
 export function generateStaricParams() {
@@ -43,13 +44,14 @@ const Page = async ({ params }) => {
   const { id } = await params;
   const food = await getSingleFood(id);
 
-  if (!food) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4">
-        <h2 className="text-2xl font-bold text-red-500 mb-2">Food Not Found!</h2>
-        <p className="text-gray-600">The requested item does not exist in our system.</p>
-      </div>
-    );
+  if (!food.title) {
+    redirect("/foods")
+    // return (
+    //   <div className="min-h-screen flex flex-col items-center justify-center p-4">
+    //     <h2 className="text-2xl font-bold text-red-500 mb-2">Food Not Found!</h2>
+    //     <p className="text-gray-600">The requested item does not exist in our system.</p>
+    //   </div>
+    // );
   }
 
   return (
